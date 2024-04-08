@@ -2,8 +2,8 @@ export type Movie = {
   id: number;
   title: string;
   releaseDate: string;
-  genre: string;
-  actors: string[];
+  genres: string;
+  actors: string;
   director: string;
   poster: string;
   plot: string;

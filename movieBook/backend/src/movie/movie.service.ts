@@ -16,8 +16,7 @@ export class MovieService {
   }
 
   async createMovie(newMovie: CreateMovie) {
-    console.log(newMovie);
-    const result = this.prismaService.movie.create(newMovie as any);
+    const result = this.prismaService.movie.create({ data: newMovie });
     return result;
   }
 
