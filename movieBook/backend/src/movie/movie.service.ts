@@ -27,7 +27,6 @@ export class MovieService {
   }
 
   deleteMovie(id: number) {
-    const index = data.findIndex((movie) => movie.id === id);
-    data.splice(index, 1);
+    this.prismaService.movie.delete({ where: { id } });
   }
 }
