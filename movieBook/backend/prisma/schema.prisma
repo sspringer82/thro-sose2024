@@ -11,9 +11,9 @@ datasource db {
 }
 
 model Movie {
-  id          Int          @id @default(autoincrement())
+  id          Int      @id @default(autoincrement())
   title       String
-  releaseDate DateTime     @map("release_date")
+  releaseDate DateTime @map("release_date")
   genres      String
   director    String
   poster      String
@@ -23,4 +23,10 @@ model Movie {
   country     String
   language    String
   actors      String
+}
+
+model User {
+  id       Int    @id @default(autoincrement())
+  username String @unique
+  password String
 }

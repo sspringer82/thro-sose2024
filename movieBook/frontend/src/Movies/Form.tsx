@@ -1,7 +1,8 @@
 import { useForm } from 'react-hook-form';
-import { CreateMovie, Movie } from './Movie';
+import { CreateMovie, Movie } from '../Movie';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect } from 'react';
+import { fetchMovie, save } from './movie.api';
 
 export function Form() {
   const { id } = useParams<{ id: string }>();
@@ -9,34 +10,15 @@ export function Form() {
 
   useEffect(() => {
     if (id) {
-      fetch(`/api/movies/${id}`)
-        .then((response) => response.json())
-        .then((data: CreateMovie) => {
-          reset(data);
-        });
+      fetchMovie(parseInt(id)).then((data) => reset(data));
     }
   }, [id]);
 
   const navigate = useNavigate();
 
   async function onSubmit(data: CreateMovie | Movie) {
-    let method = 'POST';
-    let url = '/api/movies';
-    if ((data as Movie).id) {
-      method = 'PUT';
-      url = '/api/movies/' + (data as Movie).id;
-    }
-
-    const response = await fetch(url, {
-      method,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ ...data, rating: 0, runtime: 0 }),
-    });
-    if (response.ok) {
-      navigate('/');
-    }
+    save(data);
+    navigate('/');
   }
 
   return (

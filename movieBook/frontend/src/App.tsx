@@ -1,21 +1,57 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import './App.css';
-import { List } from './List';
-import { Form } from './Form';
+import { List } from './Movies/List';
+import { Form } from './Movies/Form';
+import Login from './Auth/Login';
+import Change from './Change';
+
+type Props = {
+  children: React.ReactNode;
+};
+
+function CheckAuth({ children }: Props) {
+  const token = localStorage.getItem('access_token');
+  if (token) {
+    return <>{children}</>;
+  } else {
+    return <Login />;
+  }
+}
 
 const router = createBrowserRouter([
   {
+    path: '/list',
+    element: (
+      <CheckAuth>
+        <List />
+      </CheckAuth>
+    ),
+  },
+  {
     path: '/',
-    element: <List />,
+    element: (
+      <CheckAuth>
+        <List />
+      </CheckAuth>
+    ),
   },
   {
     path: '/create',
-    element: <Form />,
+    element: (
+      <CheckAuth>
+        <Form />
+      </CheckAuth>
+    ),
   },
   {
     path: '/edit/:id',
-    element: <Form />,
+    element: (
+      <CheckAuth>
+        <Form />
+      </CheckAuth>
+    ),
   },
+  { path: '/change', element: <Change /> },
 ]);
 
 function App() {
