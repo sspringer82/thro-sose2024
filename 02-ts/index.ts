@@ -1,12 +1,14 @@
-function add(a: number, b: number): string | number {
-  if (a % 2 === 0) {
-    return a + b;
-  }
-  return 'Hello' as any;
-}
+import Gummibaerchen from './user';
+import { createUser as importedCreateUser } from './user';
 
-const foo = add(3, 3);
+import * as foo from './user';
 
-function doSomething(x: 'Hello') {}
+console.log(foo);
 
-doSomething(foo);
+function createUser() {}
+
+const klaus = new Gummibaerchen('Klaus', 'Müller');
+console.log(klaus.getFullName());
+
+const lisa = importedCreateUser('Lisa', 'Schmidt');
+console.log(lisa.getFullName());
