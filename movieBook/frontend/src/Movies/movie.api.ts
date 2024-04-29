@@ -54,7 +54,7 @@ export async function save(movie: CreateMovie): Promise<Movie> {
       'Content-Type': 'application/json',
       ...getToken(),
     },
-    body: JSON.stringify({ ...movie, rating: 0, runtime: 0 }),
+    body: JSON.stringify({ ...movie }),
   });
 
   if (!response.ok) {

@@ -1,7 +1,8 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { Button, TextField } from '@mui/material';
+import { Button, Card, TextField } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import './Login.scss';
 
 type LoginFormInputs = {
   username: string;
@@ -35,24 +36,27 @@ const Login: React.FC = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <TextField
-        label="Username"
-        {...register('username', { required: 'Username is required' })}
-        error={!!errors.username}
-        helperText={errors.username?.message}
-      />
-      <TextField
-        label="Password"
-        type="password"
-        {...register('password', { required: 'Password is required' })}
-        error={!!errors.password}
-        helperText={errors.password?.message}
-      />
-      <Button type="submit" variant="contained" color="primary">
-        Login
-      </Button>
-    </form>
+    <Card>
+      <h1>Anmeldung</h1>
+      <form onSubmit={handleSubmit(onSubmit)} className="login">
+        <TextField
+          label="Username"
+          {...register('username', { required: 'Username is required' })}
+          error={!!errors.username}
+          helperText={errors.username?.message}
+        />
+        <TextField
+          label="Password"
+          type="password"
+          {...register('password', { required: 'Password is required' })}
+          error={!!errors.password}
+          helperText={errors.password?.message}
+        />
+        <Button type="submit" variant="contained" color="primary">
+          Login
+        </Button>
+      </form>
+    </Card>
   );
 };
 

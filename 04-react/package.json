@@ -1,5 +1,5 @@
 {
-  "name": "frontend",
+  "name": "04-react",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,17 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@emotion/react": "^11.11.4",
-    "@emotion/styled": "^11.11.5",
-    "@fontsource/roboto": "^5.0.12",
-    "@mui/icons-material": "^5.15.15",
-    "@mui/material": "^5.15.15",
-    "@tanstack/react-query": "^5.29.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-hook-form": "^7.51.2",
-    "react-router-dom": "^6.22.3",
-    "sass": "^1.75.0"
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",

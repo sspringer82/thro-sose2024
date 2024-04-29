@@ -3,7 +3,6 @@ import './App.css';
 import { List } from './Movies/List';
 import { Form } from './Movies/Form';
 import Login from './Auth/Login';
-import Change from './Change';
 
 type Props = {
   children: React.ReactNode;
@@ -51,7 +50,6 @@ const router = createBrowserRouter([
       </CheckAuth>
     ),
   },
-  { path: '/change', element: <Change /> },
 ]);
 
 function App() {
